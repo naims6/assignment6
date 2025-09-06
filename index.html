@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- css link -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- daisy ui cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- tailwindcss cdn  -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="inter-font">
+    <!-- Navbar Added -->
+    <nav class="navbar bg-[#15803D] shadow-sm text-white">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-[#15803D] rounded-box z-1 mt-3 w-52 p-2 shadow"
+          >
+            <li class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold">
+              <a>About</a>
+            </li>
+            <li class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold">
+              <a>Galary</a>
+            </li>
+            <li class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold">
+              <a>Plant a Tree</a>
+            </li>
+          </ul>
+        </div>
+        <a class="btn btn-ghost text-xl">Green Earth</a>
+      </div>
+
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a>About</a></li>
+          <li><a>Galary</a></li>
+          <li><a>Plant a Tree</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <a
+          class="btn font-medium !py-2 rounded-[35px] text-[#15803D] bg-[#FACC15]"
+          >Plant a Tree</a
+        >
+      </div>
+    </nav>
+
+    <!--  -->
+  </body>
+</html>
