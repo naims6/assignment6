@@ -32,7 +32,6 @@ const displayCategory = (categories) => {
 let cardContainer = document.querySelector(".card-container");
 
 const loadCategoryItem = async (id) => {
-  console.log(cardContainer);
   loadingSpinner(true, cardContainer);
   let categoryItemUrl = `https://openapi.programming-hero.com/api/category/${id}`;
   let response = await fetch(categoryItemUrl);
@@ -47,11 +46,12 @@ const displayCategoryItem = (categoryItems) => {
   cardContainer.innerHTML = categoryItems
     .map((item) => {
       return `
-            <div class="card-item p-3 bg-white rounded-md overflow-hidden">
-              <div class="min-w-[310px] min-h-[186px]"> 
-                <img class="w-full max-h-[186px] bg-cover rounded-md" src="${item.image}" alt="" />
+            <div class="card-item p-3 bg-white rounded-md shadow-md overflow-hidden">
+              <div class="w-full h-full max-h-[206px] object-cover overflow-hidden"> 
+                <img class="w-full h-full bg-cover object-cover rounded-md" src="${item.image}" alt="" />
               </div>
-              <h2 class="font-bold mb-3 mt-3">${item.name}</h2>
+
+              <h2 onclick="loadDetails(${item.id})" class="font-bold mb-3 mt-3 cursor-pointer">${item.name}</h2>
               <p class="text-sm text-[#1F2937]/80 mb-3">
                 ${item.description}
               </p>
@@ -156,9 +156,44 @@ const sumOfTotalPrice = () => {
 const loadingSpinner = (status, place) => {
   if (status) {
     place.innerHTML = `<div class="col-span-full text-center mt-20"><span class="loading loading-dots loading-xl"></span></div>`;
-  } else {
-    console.log("loading off");
   }
+};
+
+let dialogBox = document.getElementById("card_details");
+// Showing Dialog Box for every single card detail
+const loadDetails = async (id) => {
+  console.log(id);
+  dialogBox.showModal();
+  let detailsUrl = `https://openapi.programming-hero.com/api/plant/${id}`;
+
+  let response = await fetch(detailsUrl);
+  let data = await response.json();
+
+  displayDetails(data.plants);
+};
+
+const displayDetails = (detail) => {
+  dialogBox.innerHTML = `
+   <div class="modal-box">
+      <div> 
+        <h1 class="text-2xl font-bold mb-2">Banytan Tree <h1>
+        <div class="w-full max-h-[280px] overflow-hidden">
+          <img class="w-full h-full bg-cover rounded-md" src="${detail.image}"> 
+        </div>
+        <p class="mt-2"> <span class="font-bold">Category:</span> Shade Tree</p>
+        <p class="mt-2"> <span class="font-bold">Price:</span> $ ${detail.price}</p>
+        <p class="mt-2"> <span class="font-bold">Description:</span> $ ${detail.description}</p>
+
+
+      </div>
+
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn">Close</button>
+        </form>
+      </div>
+  </div>
+  `;
 };
 
 loadCategory();

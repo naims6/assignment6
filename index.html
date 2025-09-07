@@ -25,7 +25,7 @@
   </head>
   <body class="inter-font">
     <!-- Navbar Section -->
-    <nav class="navbar bg-[#15803D] shadow-sm text-white">
+    <nav class="fixed top-0 left-0 navbar bg-[#15803D] shadow-sm text-white">
       <div class="navbar-start">
         <div class="dropdown">
           <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -59,7 +59,9 @@
             </li>
           </ul>
         </div>
-        <a class="btn btn-ghost text-xl">Green Earth</a>
+        <a class="text-xl cursor-pointer"
+          ><span class="text-2xl">🌱</span> Green Earth</a
+        >
       </div>
 
       <div class="navbar-center hidden lg:flex">
@@ -78,13 +80,15 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="bg-[#CFF0DC]">
-      <div class="flex items-center max-w-[1600px] mx-auto">
+    <section class="bg-[#CFF0DC] mt-16">
+      <div
+        class="flex items-center justify-center max-w-[1600px] mx-auto px-5 lg:px-12"
+      >
         <div class="hidden xl:block self-end">
           <img class="w-full" src="./assets/hero-leaf1.png" alt="" />
         </div>
         <div
-          class="w-full xl:flex-1 px-4 md:px-10 lg:px-20 text-center py-10 md:pt-16 lg:pt-20 flex flex-col items-center justify-center"
+          class="grow-0 text-center 2xl:px-16 py-8 md:pt-12 lg:pt-14 2xl:pt-20 flex flex-col items-center justify-center"
         >
           <h1
             class="text-[#1F2937] text-2xl md:text-3xl lg:text-5xl font-bold text-nowrap"
@@ -92,7 +96,7 @@
             Plant a Tree, Grow a Future
           </h1>
           <p
-            class="text-[#1F2937] text-sm md:text-base font-normal leading-6 max-w-[550px] mb-6 mt-2"
+            class="text-[#1F2937] w-[90%] text-sm md:text-base font-normal leading-5 md:leading-6 max-w-[550px] mb-6 mt-2"
           >
             Join our mission to plant 1 million trees and make the Earth greener
             for future generations.
@@ -122,7 +126,7 @@
       </h1>
 
       <div
-        class="flex flex-col-reverse lg:flex-row max-w-[1600px] gap-6 mx-auto px-4 md:px-16 lg:px-24 min-h-[750px]"
+        class="flex flex-col-reverse lg:flex-row max-w-[1600px] gap-6 mx-auto px-4 md:px-16 lg:px-24 min-h-[420px]"
       >
         <aside class="hidden xl:block w-[220px] shrink-0">
           <div>
@@ -135,7 +139,7 @@
 
         <main class="flex-1 lg:w-[1070px]">
           <div
-            class="card-container grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4"
+            class="card-container grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3"
           >
             <!-- Plants card will show here -->
           </div>
@@ -179,12 +183,18 @@
         About the Campaign
       </h1>
       <div
-        class="max-w-[1040px] mx-auto flex flex-col md:flex-row items-center justify-between gap-7 px-4 md:px-16 lg:px-24"
+        class="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-center px-4 md:px-16 lg:px-24 gap-5 md:gap-0"
       >
-        <img class="w-4/5" src="./assets/about.png" alt="" />
-        <div>
-          <p class="text-[#1F2937]/80 text-base leading-6">
-            Green Earth is a global tree plantation initiative dedicated to
+        <div class="flex-1 flex items-center justify-center">
+          <img
+            class="w-full md:w-7/10 shadow-lg rounded-lg"
+            src="./assets/about.png"
+            alt=""
+          />
+        </div>
+        <div class="flex-1">
+          <p class="text-[#1F2937]/80 text-base leading-6 max-w-[80%]">
+            -- Green Earth is a global tree plantation initiative dedicated to
             fighting climate change. Since our start, we’ve planted over 500,000
             trees worldwide. By joining our campaign, you help restore forests,
             create habitats for wildlife, and combat global warming.
@@ -213,21 +223,27 @@
       <div
         class="max-w-[1600px] mx-auto px-4 md:px-16 lg:px-24 flex gap-5 md:gap-12 flex-col md:flex-row justify-between items-center"
       >
-        <div class="flex flex-col bg-white p-10 rounded-lg w-full text-center">
+        <div
+          class="flex flex-col bg-white p-10 rounded-lg w-full text-center shadow-md"
+        >
           <h1 class="text-[#15803D] text-2xl md:text-3xl font-bold mb-4">
             500K+
           </h1>
           <span class="text-[#1F2937]/80">Trees Planted</span>
         </div>
 
-        <div class="flex flex-col bg-white p-10 rounded-lg w-full text-center">
+        <div
+          class="flex flex-col bg-white p-10 rounded-lg w-full text-center shadow-md"
+        >
           <h1 class="text-[#15803D] text-2xl md:text-3xl font-bold mb-4">
             120+
           </h1>
           <span class="text-[#1F2937]/80">Communities Involved</span>
         </div>
 
-        <div class="flex flex-col bg-white p-10 rounded-lg w-full text-center">
+        <div
+          class="flex flex-col bg-white p-10 rounded-lg w-full text-center shadow-md"
+        >
           <h1 class="text-[#15803D] text-2xl md:text-3xl font-bold mb-4">
             30+
           </h1>
@@ -265,13 +281,13 @@
             class="rounded-md bg-white py-3 px-3 w-full outline-none border-none"
           >
             <option value="" disabled selected>Number of Trees</option>
-            <option value="">1 Trees</option>
-            <option value="">2 Trees</option>
-            <option value="">5 Trees</option>
+            <option value="">1 Tree - $5</option>
+            <option value="">5 Trees - $25</option>
+            <option value="">10 Trees - $50</option>
           </select>
           <button
             type="button"
-            class="w-full btn font-medium !py-2 rounded-[35px] text-[#15803D] bg-[#FACC15] mt-2"
+            class="w-full btn font-semibold !py-2 rounded-[35px] text-[#15803D] bg-[#FACC15] mt-2"
           >
             Donate Now
           </button>
@@ -284,6 +300,13 @@
         </p>
       </div>
     </footer>
+
+    <!-- Dialog Box for every single card detail -->
+    <button class="btn" onclick="card_details.showModal()">open modal</button>
+    <dialog
+      id="card_details"
+      class="modal modal-bottom sm:modal-middle"
+    ></dialog>
 
     <script src="./main.js"></script>
   </body>
