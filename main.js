@@ -60,7 +60,7 @@ const displayCategoryItem = (categoryItems) => {
               </div>
 
               <button
-                onclick="addToCart('${item.name}', '${item.price}', '${item.id}')"
+                onclick="addToCart('${item.name}', ${item.price}, '${item.id}')"
                 class="add-cart-btn btn bg-[#15803D] text-white rounded-3xl w-full py-3 mt-3"
               >
                 Add to Card
@@ -94,13 +94,14 @@ let cartContainer = document.querySelector(".cart-container");
 const addToCart = (treeName, price, id) => {
   cart.unshift({ treeName, price, id });
   displayAddToCart(id);
+  sumOfTotalPrice();
 };
 
 const removeCart = (id) => {
-  cart = cart.filter((cartItem) => {
-    return cartItem.id !== id;
-  });
+  cart = cart.filter((cartItem) => cartItem.id !== id);
+
   displayAddToCart();
+  sumOfTotalPrice();
 };
 
 const displayAddToCart = () => {
@@ -117,6 +118,19 @@ const displayAddToCart = () => {
     `;
     })
     .join(" ");
+};
+
+// *****
+// Total Price of Add To Card Added
+// *****
+let totalPrice = document.querySelector(".total-price");
+
+const sumOfTotalPrice = () => {
+  let total = cart.reduce((sum, cartItem) => {
+    sum += cartItem.price;
+    return sum;
+  }, 0);
+  totalPrice.innerText = total;
 };
 
 loadCategory();
