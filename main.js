@@ -92,7 +92,18 @@ let cart = [];
 let cartContainer = document.querySelector(".cart-container");
 
 const addToCart = (treeName, price, id) => {
-  cart.unshift({ treeName, price, id });
+  let count = 1;
+  let matchedItem = cart.find((cartItem) => cartItem.id === id);
+
+  if (matchedItem) {
+    matchedItem.price += price;
+    matchedItem.count += 1;
+    displayAddToCart(id);
+    sumOfTotalPrice();
+    return;
+  }
+
+  cart.unshift({ treeName, price, id, count });
   displayAddToCart(id);
   sumOfTotalPrice();
 };
@@ -111,7 +122,7 @@ const displayAddToCart = () => {
         <div class="flex items-center justify-between p-2 rounded-sm bg-[#F0FDF4] cursor-pointer">
             <div>
               <h2 class="font-bold mb-1.5">${cartItem.treeName}</h2>
-              <span class="text-[#1F2937]/50">৳${cartItem.price} x 1</span>
+              <span class="text-[#1F2937]/50">৳ ${cartItem.price} x ${cartItem.count}</span>
             </div>
             <span onclick="removeCart('${cartItem.id}')" class="cursor-pointer bg-gray-200 p-2 rounded-md text-red-600/80"><i class="fa-solid fa-trash"></i></span>
         </div>
