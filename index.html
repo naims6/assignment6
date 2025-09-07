@@ -119,133 +119,17 @@
         <aside class="hidden xl:block w-[220px] shrink-0">
           <div>
             <h2 class="font-bold text-2xl">Categories</h2>
-            <ul class="mt-2 space-y-1.5">
-              <li
-                class="cursor-pointer py-2 px-3 bg-[#15803D] text-white rounded-sm"
-              >
-                All Trees
-              </li>
-              <li
-                class="cursor-pointer py-2 px-3 hover:bg-[#15803D] hover:text-white rounded-sm transition-all duration-100"
-              >
-                All Trees
-              </li>
-              <li
-                class="cursor-pointer py-2 px-3 hover:bg-[#15803D] hover:text-white rounded-sm transition-all duration-100"
-              >
-                All Trees
-              </li>
-              <li
-                class="cursor-pointer py-2 px-3 hover:bg-[#15803D] hover:text-white rounded-sm transition-all duration-100"
-              >
-                All Trees
-              </li>
-              <li
-                class="cursor-pointer py-2 px-3 hover:bg-[#15803D] hover:text-white rounded-sm transition-all duration-100"
-              >
-                All Trees
-              </li>
-              <li
-                class="cursor-pointer py-2 px-3 hover:bg-[#15803D] hover:text-white rounded-sm transition-all duration-100"
-              >
-                All Trees
-              </li>
-              <li
-                class="cursor-pointer py-2 px-3 hover:bg-[#15803D] hover:text-white rounded-sm transition-all duration-100"
-              >
-                All Trees
-              </li>
+            <ul class="all-category mt-2 space-y-1.5">
+              <!-- Category will fetch here from js -->
             </ul>
           </div>
         </aside>
 
         <main class="flex-1 lg:w-[1070px]">
           <div
-            class="card-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
+            class="card-container grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4"
           >
-            <div class="card-item p-3 bg-white rounded-md">
-              <img class="w-full rounded-md" src="./assets/about.png" alt="" />
-              <h2 class="font-bold mb-3 mt-3">Mango Tree</h2>
-              <p class="text-sm text-[#1F2937]/80 mb-3">
-                A fast growing tropical tree that produces delicious juic
-                mangoes during summer. it's dense green
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-[#15803D] bg-[#DCFCE7] py-2 px-3 rounded-[35px]"
-                  >Fruit Tree</span
-                >
-                <span class="font-medium">$500</span>
-              </div>
-              <button
-                class="btn bg-[#15803D] text-white rounded-3xl w-full py-3 mt-3"
-              >
-                Add to Card
-              </button>
-            </div>
-
-            <div class="card-item p-3 bg-white rounded-md">
-              <img class="w-full rounded-md" src="./assets/about.png" alt="" />
-              <h2 class="font-bold mb-3 mt-3">Mango Tree</h2>
-              <p class="text-sm text-[#1F2937]/80 mb-3">
-                A fast growing tropical tree that produces delicious juic
-                mangoes during summer. it's dense green
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-[#15803D] bg-[#DCFCE7] py-2 px-3 rounded-[35px]"
-                  >Fruit Tree</span
-                >
-                <span class="font-medium">$500</span>
-              </div>
-              <button
-                class="btn bg-[#15803D] text-white rounded-3xl w-full py-3 mt-3"
-              >
-                Add to Card
-              </button>
-            </div>
-
-            <div class="card-item p-3 bg-white rounded-md">
-              <img class="w-full rounded-md" src="./assets/about.png" alt="" />
-              <h2 class="font-bold mb-3 mt-3">Mango Tree</h2>
-              <p class="text-sm text-[#1F2937]/80 mb-3">
-                A fast growing tropical tree that produces delicious juic
-                mangoes during summer. it's dense green
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-[#15803D] bg-[#DCFCE7] py-2 px-3 rounded-[35px]"
-                  >Fruit Tree</span
-                >
-                <span class="font-medium">$500</span>
-              </div>
-              <button
-                class="btn bg-[#15803D] text-white rounded-3xl w-full py-3 mt-3"
-              >
-                Add to Card
-              </button>
-            </div>
-
-            <div class="card-item p-3 bg-white rounded-md">
-              <img class="w-full rounded-md" src="./assets/about.png" alt="" />
-              <h2 class="font-bold mb-3 mt-3">Mango Tree</h2>
-              <p class="text-sm text-[#1F2937]/80 mb-3">
-                A fast growing tropical tree that produces delicious juic
-                mangoes during summer. it's dense green
-              </p>
-              <div class="flex justify-between items-center">
-                <span
-                  class="text-[#15803D] bg-[#DCFCE7] py-2 px-3 rounded-[35px]"
-                  >Fruit Tree</span
-                >
-                <span class="font-medium">$500</span>
-              </div>
-              <button
-                class="btn bg-[#15803D] text-white rounded-3xl w-full py-3 mt-3"
-              >
-                Add to Card
-              </button>
-            </div>
+            <!-- Plants card will show here -->
           </div>
         </main>
         <!-- dropdown -->
@@ -389,7 +273,7 @@
           />
           <input
             type="text"
-            placeholder="Your Name"
+            placeholder="Your Email Address"
             class="rounded-md bg-white py-3 px-3 w-full outline-none border-none"
           />
 
@@ -397,11 +281,13 @@
             name=""
             class="rounded-md bg-white py-3 px-3 w-full outline-none border-none"
           >
+            <option value="" disabled selected>Number of Trees</option>
             <option value="">1 Trees</option>
             <option value="">2 Trees</option>
             <option value="">5 Trees</option>
           </select>
           <button
+            type="button"
             class="w-full btn font-medium !py-2 rounded-[35px] text-[#15803D] bg-[#FACC15] mt-2"
           >
             Donate Now
@@ -415,5 +301,7 @@
         </p>
       </div>
     </footer>
+
+    <script src="./main.js"></script>
   </body>
 </html>
