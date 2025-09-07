@@ -30,8 +30,8 @@ const displayCategory = (categories) => {
 };
 // For Small Device
 categoryBtn.addEventListener("click", () => {
-  mobileAllCategoryContainer.classList.remove("min-h-[0px]");
-  mobileAllCategoryContainer.classList.add("max-h-[250px]");
+  mobileAllCategoryContainer.classList.toggle("min-h-[0px]");
+  mobileAllCategoryContainer.classList.toggle("max-h-[250px]");
 });
 // *****
 // Showing Category Item as a Card
