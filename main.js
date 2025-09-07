@@ -4,6 +4,7 @@
 let allCategoryContainer = document.querySelector(".all-category");
 
 const loadCategory = async () => {
+  loadingSpinner(true, allCategoryContainer);
   let categoriesUrl = "https://openapi.programming-hero.com/api/categories";
 
   let response = await fetch(categoriesUrl);
@@ -12,6 +13,7 @@ const loadCategory = async () => {
 };
 
 const displayCategory = (categories) => {
+  loadingSpinner(false);
   allCategoryContainer.innerHTML = categories
     .map((category) => {
       return `
@@ -30,6 +32,8 @@ const displayCategory = (categories) => {
 let cardContainer = document.querySelector(".card-container");
 
 const loadCategoryItem = async (id) => {
+  console.log(cardContainer);
+  loadingSpinner(true, cardContainer);
   let categoryItemUrl = `https://openapi.programming-hero.com/api/category/${id}`;
   let response = await fetch(categoryItemUrl);
   let data = await response.json();
@@ -39,12 +43,13 @@ const loadCategoryItem = async (id) => {
 };
 
 const displayCategoryItem = (categoryItems) => {
+  loadingSpinner(false);
   cardContainer.innerHTML = categoryItems
     .map((item) => {
       return `
             <div class="card-item p-3 bg-white rounded-md overflow-hidden">
               <div class="min-w-[310px] min-h-[186px]"> 
-                <img class="w-full max-h-[186px] bg-contain rounded-md" src="${item.image}" alt="" />
+                <img class="w-full max-h-[186px] bg-cover rounded-md" src="${item.image}" alt="" />
               </div>
               <h2 class="font-bold mb-3 mt-3">${item.name}</h2>
               <p class="text-sm text-[#1F2937]/80 mb-3">
@@ -142,6 +147,18 @@ const sumOfTotalPrice = () => {
     return sum;
   }, 0);
   totalPrice.innerText = total;
+};
+
+// *****
+// Loading Spinner Functionality
+// *****
+
+const loadingSpinner = (status, place) => {
+  if (status) {
+    place.innerHTML = `<div class="col-span-full text-center mt-20"><span class="loading loading-dots loading-xl"></span></div>`;
+  } else {
+    console.log("loading off");
+  }
 };
 
 loadCategory();
