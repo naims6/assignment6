@@ -14,6 +14,14 @@
     />
     <!-- tailwindcss cdn  -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome Cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body class="inter-font">
     <!-- Navbar Section -->
@@ -143,40 +151,15 @@
           </select>
           Choose Your Trees
         </h1>
+
         <div class="w-full lg:w-[240px] shrink-0">
           <div class="bg-white rounded-lg p-3 w-full h-full">
             <h1 class="text-2xl">Your Cart</h1>
 
-            <div class="mt-2.5 pb-3 space-y-3 border-b border-gray-200">
-              <div
-                class="flex items-center justify-between p-2 rounded-sm bg-[#F0FDF4] cursor-pointer"
-              >
-                <div>
-                  <h2 class="font-bold mb-1.5">Mango Tree</h2>
-                  <span class="text-[#1F2937]/50">৳500 x 1</span>
-                </div>
-                <span class="text-[#1F2937]/50">X</span>
-              </div>
-
-              <div
-                class="flex items-center justify-between p-2 rounded-sm bg-[#F0FDF4] cursor-pointer"
-              >
-                <div>
-                  <h2 class="font-bold mb-1.5">Mango Tree</h2>
-                  <span class="text-[#1F2937]/50">৳500 x 1</span>
-                </div>
-                <span class="text-[#1F2937]/50">X</span>
-              </div>
-
-              <div
-                class="flex items-center justify-between p-2 rounded-sm bg-[#F0FDF4] cursor-pointer"
-              >
-                <div>
-                  <h2 class="font-bold mb-1.5">Mango Tree</h2>
-                  <span class="text-[#1F2937]/50">৳500 x 1</span>
-                </div>
-                <span class="text-[#1F2937]/50">X</span>
-              </div>
+            <div
+              class="cart-container mt-2.5 pb-3 space-y-3 border-b border-gray-200"
+            >
+              <!-- addToCard will show Here from js -->
             </div>
 
             <div class="flex justify-between items-center p-3">

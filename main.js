@@ -60,7 +60,7 @@ const displayCategoryItem = (categoryItems) => {
               </div>
 
               <button
-                onclick="addToCart('${item.name}', '${item.price}')"
+                onclick="addToCart('${item.name}', '${item.price}', '${item.id}')"
                 class="add-cart-btn btn bg-[#15803D] text-white rounded-3xl w-full py-3 mt-3"
               >
                 Add to Card
@@ -89,10 +89,34 @@ const addActiveClass = (id) => {
 // *****
 
 let cart = [];
+let cartContainer = document.querySelector(".cart-container");
 
-const addToCart = (treeName, price) => {
-  cart.unshift({ treeName, price });
-  console.log(cart);
+const addToCart = (treeName, price, id) => {
+  cart.unshift({ treeName, price, id });
+  displayAddToCart(id);
+};
+
+const removeCart = (id) => {
+  cart = cart.filter((cartItem) => {
+    return cartItem.id !== id;
+  });
+  displayAddToCart();
+};
+
+const displayAddToCart = () => {
+  cartContainer.innerHTML = cart
+    .map((cartItem) => {
+      return `
+        <div class="flex items-center justify-between p-2 rounded-sm bg-[#F0FDF4] cursor-pointer">
+            <div>
+              <h2 class="font-bold mb-1.5">${cartItem.treeName}</h2>
+              <span class="text-[#1F2937]/50">৳${cartItem.price} x 1</span>
+            </div>
+            <span onclick="removeCart('${cartItem.id}')" class="cursor-pointer bg-gray-200 p-2 rounded-md text-red-600/80"><i class="fa-solid fa-trash"></i></span>
+        </div>
+    `;
+    })
+    .join(" ");
 };
 
 loadCategory();
