@@ -2,6 +2,8 @@
 // Showing Category
 // *****
 let allCategoryContainer = document.querySelector(".all-category");
+let mobileAllCategoryContainer = document.querySelector(".mobile-all-category");
+let categoryBtn = document.querySelector(".category-btn");
 
 const loadCategory = async () => {
   loadingSpinner(true, allCategoryContainer);
@@ -14,18 +16,23 @@ const loadCategory = async () => {
 
 const displayCategory = (categories) => {
   loadingSpinner(false);
-  allCategoryContainer.innerHTML = categories
+  let categoryList = categories
     .map((category) => {
       return `
-        <li onclick="loadCategoryItem(${category.id})" id="${category.id}" class="category cursor-pointer hover:bg-[#15803D] hover:text-white py-2 px-3 hover: rounded-sm" >
+        <li onclick="loadCategoryItem(${category.id})" id="${category.id}" class="category-${category.id} category cursor-pointer bg-gray-200 md:bg-transparent hover:bg-[#15803D] hover:text-white py-2 px-3 rounded-sm">
             ${category.category_name}
         </li>
-    
     `;
     })
     .join(" ");
+  allCategoryContainer.innerHTML = categoryList;
+  mobileAllCategoryContainer.innerHTML = categoryList;
 };
-
+// For Small Device
+categoryBtn.addEventListener("click", () => {
+  mobileAllCategoryContainer.classList.remove("min-h-[0px]");
+  mobileAllCategoryContainer.classList.add("max-h-[250px]");
+});
 // *****
 // Showing Category Item as a Card
 // *****
@@ -38,7 +45,7 @@ const loadCategoryItem = async (id) => {
   let data = await response.json();
 
   displayCategoryItem(data.plants);
-  addActiveClass(id);
+  addActiveClass(`category-${id}`);
 };
 
 const displayCategoryItem = (categoryItems) => {
@@ -47,7 +54,7 @@ const displayCategoryItem = (categoryItems) => {
     .map((item) => {
       return `
             <div class="card-item p-3 bg-white rounded-md shadow-md overflow-hidden">
-              <div class="w-full h-full max-h-[206px] object-cover overflow-hidden"> 
+              <div class="w-full h-full max-h-[230px] md:max-h-[206px] object-cover overflow-hidden"> 
                 <img class="w-full h-full bg-cover object-cover rounded-md" src="${item.image}" alt="" />
               </div>
 
@@ -80,13 +87,19 @@ const removeActiveClass = () => {
   let allCategory = document.querySelectorAll(".category");
   allCategory.forEach((category) => {
     category.classList.remove("bg-[#15803D]", "text-white");
+    category.classList.add("bg-gray-200", "md:bg-transparent");
   });
 };
 
-const addActiveClass = (id) => {
+const addActiveClass = (className) => {
   removeActiveClass();
-  let clickedItem = document.getElementById(`${id}`);
-  clickedItem.classList.add("bg-[#15803D]", "text-white");
+
+  let clickedItem = document.querySelectorAll(`.${className}`);
+  clickedItem.forEach((clicked) => {
+    console.log(clicked);
+    clicked.classList.remove("bg-gray-200", "md:bg-transparent");
+    clicked.classList.add("bg-[#15803D]", "text-white");
+  });
 };
 
 // *****
@@ -126,10 +139,14 @@ const displayAddToCart = () => {
       return `
         <div class="flex items-center justify-between p-2 rounded-sm bg-[#F0FDF4] cursor-pointer">
             <div>
-              <h2 class="font-bold mb-1.5">${cartItem.treeName}</h2>
-              <span class="text-[#1F2937]/50">৳ ${cartItem.price} x ${cartItem.count}</span>
+              <h2 class="font-bold mb-1">${cartItem.treeName}</h2>
+              <span class="text-[#1F2937]/50">৳ ${
+                cartItem.price / cartItem.count
+              } x ${cartItem.count}</span> = ${cartItem.price}
             </div>
-            <span onclick="removeCart('${cartItem.id}')" class="cursor-pointer bg-gray-200 p-2 rounded-md text-red-600/80"><i class="fa-solid fa-trash"></i></span>
+            <span onclick="removeCart('${
+              cartItem.id
+            }')" class="cursor-pointer bg-gray-100 p-2 rounded-md text-red-600/70"><i class="fa-solid fa-trash text-sm"></i></span>
         </div>
     `;
     })
@@ -152,15 +169,14 @@ const sumOfTotalPrice = () => {
 // *****
 // Loading Spinner Functionality
 // *****
-
 const loadingSpinner = (status, place) => {
   if (status) {
     place.innerHTML = `<div class="col-span-full text-center mt-20"><span class="loading loading-dots loading-xl"></span></div>`;
   }
 };
 
-let dialogBox = document.getElementById("card_details");
 // Showing Dialog Box for every single card detail
+let dialogBox = document.getElementById("card_details");
 const loadDetails = async (id) => {
   console.log(id);
   dialogBox.showModal();
@@ -174,13 +190,13 @@ const loadDetails = async (id) => {
 
 const displayDetails = (detail) => {
   dialogBox.innerHTML = `
-   <div class="modal-box">
+   <div class="modal-box p-3">
       <div> 
-        <h1 class="text-2xl font-bold mb-2">Banytan Tree <h1>
-        <div class="w-full max-h-[280px] overflow-hidden">
-          <img class="w-full h-full bg-cover rounded-md" src="${detail.image}"> 
+        <h1 class="text-2xl font-bold mb-2">${detail.name} <h1>
+        <div class="w-full max-h-[320px] overflow-hidden">
+          <img class="w-full h-full aspect-video object-cover  rounded-md" src="${detail.image}"> 
         </div>
-        <p class="mt-2"> <span class="font-bold">Category:</span> Shade Tree</p>
+        <p class="mt-2"> <span class="font-bold">Category:</span> ${detail.category}</p>
         <p class="mt-2"> <span class="font-bold">Price:</span> $ ${detail.price}</p>
         <p class="mt-2"> <span class="font-bold">Description:</span> $ ${detail.description}</p>
 

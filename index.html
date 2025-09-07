@@ -117,11 +117,6 @@
       <h1
         class="hidden lg:flex text-center text-2xl md:text-4xl mb-10 text-[#1F2937] font-bold items-center justify-center gap-4"
       >
-        <select name="" id="" class="text-left xl:hidden text-xl md:text-xl">
-          <option value="Tree Plants" class="text-xl md:text-xl">
-            Tree Plants
-          </option>
-        </select>
         Choose Your Trees
       </h1>
 
@@ -145,16 +140,19 @@
           </div>
         </main>
         <!-- dropdown -->
-        <h1
-          class="lg:hidden text-center text-2xl md:text-4xl mt-4 mb-5 text-[#1F2937] font-bold flex items-center justify-center gap-4"
-        >
-          <select name="" id="" class="text-left xl:hidden text-xl md:text-xl">
-            <option value="Tree Plants" class="text-xl md:text-xl">
-              Tree Plants
-            </option>
-          </select>
-          Choose Your Trees
-        </h1>
+        <div class="md:hidden">
+          <div class="text-center">
+            <button class="category-btn btn bg-[#15803D] text-white rounded-sm">
+              Choose Catagory >
+            </button>
+          </div>
+          <!-- sub dropdown  -->
+          <ul
+            class="max-h-[0px] w-full overflow-hidden mobile-all-category flex flex-wrap justify-center items-center gap-1.5 mt-3 transition-all duration-300"
+          >
+            <!-- Category will fetch here from js -->
+          </ul>
+        </div>
 
         <div class="w-full lg:w-[240px] shrink-0">
           <div class="bg-white rounded-lg p-3 w-full h-full">
