@@ -49,6 +49,7 @@ categoryBtn.addEventListener("click", () => {
 let cardContainer = document.querySelector(".card-container");
 
 const loadCategoryItem = async (id) => {
+  console.log(id);
   loadingSpinner(true, cardContainer);
   let categoryItemUrl =
     id === "plants"
@@ -65,8 +66,8 @@ const displayCategoryItem = (categoryItems) => {
   cardContainer.innerHTML = categoryItems
     .map((item) => {
       return `
-            <div class="card-item p-3 bg-white rounded-md shadow-md overflow-hidden">
-              <div class="w-full h-full max-h-[230px] md:max-h-[206px] object-cover overflow-hidden"> 
+            <div class="card-item flex flex-col justify-between p-3 bg-white rounded-md shadow-md overflow-hidden">
+             <div class="w-full h-full max-h-[230px] md:max-h-[206px] object-cover overflow-hidden"> 
                 <img class="w-full h-full bg-cover object-cover rounded-md" src="${item.image}" alt="" />
               </div>
 
