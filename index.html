@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Green - Earth</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/hero-leaf1.png"
+      type="image/x-icon"
+    />
     <!-- css link -->
     <link rel="stylesheet" href="style.css" />
     <!-- daisy ui cdn -->
@@ -25,57 +30,69 @@
   </head>
   <body class="inter-font">
     <!-- Navbar Section -->
-    <nav class="fixed top-0 left-0 navbar bg-[#15803D] shadow-sm text-white">
-      <div class="navbar-start">
-        <div class="dropdown">
-          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+    <nav
+      class="bg-[#15803D]/70 backdrop-blur-2xl w-full fixed top-0 left-0 z-999 flex items-center justify-center shadow-md"
+    >
+      <div
+        class="navbar max-w-[1600px] px-4 md-px-10 lg:px-20 shadow-sm bg-transparent text-white"
+      >
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-[#15803D] rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+              <li
+                class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold"
+              >
+                <a>About</a>
+              </li>
+              <li
+                class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold"
+              >
+                <a>Galary</a>
+              </li>
+              <li
+                class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold"
+              >
+                <a>Plant a Tree</a>
+              </li>
+            </ul>
           </div>
-          <ul
-            tabindex="0"
-            class="menu menu-sm dropdown-content bg-[#15803D] rounded-box z-1 mt-3 w-52 p-2 shadow"
+          <a class="text-xl cursor-pointer text-nowrap"
+            ><span class="text-2xl">🌱</span> Green Earth</a
           >
-            <li class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold">
-              <a>About</a>
-            </li>
-            <li class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold">
-              <a>Galary</a>
-            </li>
-            <li class="border border-gray-200 py-2 mt-1.5 rounded-sm font-bold">
-              <a>Plant a Tree</a>
-            </li>
+        </div>
+
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li class="font-semibold"><a>About</a></li>
+            <li class="font-semibold"><a>Galary</a></li>
+            <li class="font-semibold"><a>Plant a Tree</a></li>
           </ul>
         </div>
-        <a class="text-xl cursor-pointer text-nowrap"
-          ><span class="text-2xl">🌱</span> Green Earth</a
-        >
-      </div>
-
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-          <li><a>About</a></li>
-          <li><a>Galary</a></li>
-          <li><a>Plant a Tree</a></li>
-        </ul>
-      </div>
-      <div class="navbar-end">
-        <a
-          class="btn font-medium !py-2 rounded-[35px] text-[#15803D] bg-[#FACC15]"
-          >Get Involved</a
-        >
+        <div class="navbar-end">
+          <a
+            class="btn font-medium !py-2 rounded-[35px] text-[#15803D] bg-[#FACC15]"
+            >Plant a Tree</a
+          >
+        </div>
       </div>
     </nav>
 
@@ -103,7 +120,7 @@
           </p>
           <a
             class="btn font-medium !py-2 rounded-[35px] text-[#15803D] bg-[#FACC15]"
-            >Plant a Tree</a
+            >Get Involved</a
           >
         </div>
         <div class="hidden xl:block self-end">
@@ -134,16 +151,17 @@
 
         <main class="flex-1">
           <div
-            class="card-container grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3"
+            class="card-container grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-3 xl:max-h-[860px] overflow-y-auto"
           >
             <!-- Plants card will show here -->
           </div>
         </main>
-        <!-- dropdown -->
+        <!-- dropdown category for mobile -->
         <div class="xl:hidden">
           <div class="text-center">
             <button class="category-btn btn bg-[#15803D] text-white rounded-sm">
-              Choose Catagory >
+              Choose Catagory
+              <i class="fa-solid fa-chevron-down rotate-180 arrow-down"></i>
             </button>
           </div>
           <!-- sub dropdown  -->
@@ -156,7 +174,10 @@
 
         <div class="w-full xl:w-[240px] shrink-0">
           <div class="bg-white rounded-lg p-3 w-full h-full">
-            <h1 class="text-2xl">Your Cart</h1>
+            <h1 class="text-2xl flex justify-between items-center">
+              Your Cart
+              <span class="total-cart text-gray-950 text-base">0</span>
+            </h1>
 
             <div
               class="cart-container mt-2.5 pb-3 space-y-3 border-b border-gray-200"
@@ -300,7 +321,6 @@
     </footer>
 
     <!-- Dialog Box for every single card detail -->
-    <button class="btn" onclick="card_details.showModal()">open modal</button>
     <dialog
       id="card_details"
       class="modal modal-bottom sm:modal-middle"

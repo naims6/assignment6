@@ -25,14 +25,24 @@ const displayCategory = (categories) => {
     `;
     })
     .join(" ");
+
+  const allTreesItem = ` 
+      <li onclick="loadCategoryItem('plants')" id="plants" class="category-plants category cursor-pointer bg-gray-200 md:bg-transparent hover:bg-[#15803D] hover:text-white py-2 px-3 rounded-sm">
+          All Trees
+      </li>`;
+
   allCategoryContainer.innerHTML = categoryList;
+  allCategoryContainer.insertAdjacentHTML("afterbegin", allTreesItem);
   mobileAllCategoryContainer.innerHTML = categoryList;
+  mobileAllCategoryContainer.insertAdjacentHTML("afterbegin", allTreesItem);
 };
 // For Small Device
 categoryBtn.addEventListener("click", () => {
+  document.querySelector(".arrow-down").classList.toggle("rotate-180");
   mobileAllCategoryContainer.classList.toggle("min-h-[0px]");
   mobileAllCategoryContainer.classList.toggle("max-h-[250px]");
 });
+
 // *****
 // Showing Category Item as a Card
 // *****
@@ -40,10 +50,12 @@ let cardContainer = document.querySelector(".card-container");
 
 const loadCategoryItem = async (id) => {
   loadingSpinner(true, cardContainer);
-  let categoryItemUrl = `https://openapi.programming-hero.com/api/category/${id}`;
+  let categoryItemUrl =
+    id === "plants"
+      ? `https://openapi.programming-hero.com/api/${id}`
+      : `https://openapi.programming-hero.com/api/category/${id}`;
   let response = await fetch(categoryItemUrl);
   let data = await response.json();
-
   displayCategoryItem(data.plants);
   addActiveClass(`category-${id}`);
 };
@@ -96,7 +108,6 @@ const addActiveClass = (className) => {
 
   let clickedItem = document.querySelectorAll(`.${className}`);
   clickedItem.forEach((clicked) => {
-    console.log(clicked);
     clicked.classList.remove("bg-gray-200", "md:bg-transparent");
     clicked.classList.add("bg-[#15803D]", "text-white");
   });
@@ -108,6 +119,7 @@ const addActiveClass = (className) => {
 
 let cart = [];
 let cartContainer = document.querySelector(".cart-container");
+let totalCart = document.querySelector(".total-cart");
 
 const addToCart = (treeName, price, id) => {
   let count = 1;
@@ -124,6 +136,7 @@ const addToCart = (treeName, price, id) => {
   cart.unshift({ treeName, price, id, count });
   displayAddToCart(id);
   sumOfTotalPrice();
+  totalCart.innerText = cart.length;
 };
 
 const removeCart = (id) => {
@@ -131,6 +144,7 @@ const removeCart = (id) => {
 
   displayAddToCart();
   sumOfTotalPrice();
+  totalCart.innerText = cart.length;
 };
 
 const displayAddToCart = () => {
@@ -178,7 +192,6 @@ const loadingSpinner = (status, place) => {
 // Showing Dialog Box for every single card detail
 let dialogBox = document.getElementById("card_details");
 const loadDetails = async (id) => {
-  console.log(id);
   dialogBox.showModal();
   let detailsUrl = `https://openapi.programming-hero.com/api/plant/${id}`;
 
@@ -198,7 +211,7 @@ const displayDetails = (detail) => {
         </div>
         <p class="mt-2"> <span class="font-bold">Category:</span> ${detail.category}</p>
         <p class="mt-2"> <span class="font-bold">Price:</span> $ ${detail.price}</p>
-        <p class="mt-2"> <span class="font-bold">Description:</span> $ ${detail.description}</p>
+        <p class="mt-2"> <span class="font-bold">Description:</span> ${detail.description}</p>
 
 
       </div>
@@ -213,4 +226,4 @@ const displayDetails = (detail) => {
 };
 
 loadCategory();
-loadCategoryItem(1);
+loadCategoryItem("plants");
